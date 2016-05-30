@@ -1,0 +1,16 @@
+<h1>Items#new</h1>
+<p>Find me in app/views/items/new.html.erb</p>
+
+<%= form_for @item, url: {action: "create"}, multipart: true do |f| %>
+	<%= label_tag(:title, "Titel:") %>
+	<%= f.text_field :title %>
+	<%= label_tag(:description, "Beschrijving:") %>
+	<%= f.text_area :description, size: "60x12" %>
+
+	<%= label_tag(:portfolio_image, "Afbeelding:") %>
+	<%= f.file_field :portfolio_image %>
+
+	<%= f.collection_check_boxes :category_ids, Category.all, :id, :title %>
+
+	<%= f.submit "Aanmaken" %>
+<% end %>	

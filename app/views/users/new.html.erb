@@ -1,0 +1,28 @@
+<h1>Registeren!</h1>
+
+<%= form_for(@user) do |f| %>
+
+
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this todo item from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <%= label_tag(:name, "Naam:") %>
+  <%= f.text_field :name %>
+  <%= label_tag(:email, "Email:") %>
+  <%= f.text_field :email %>
+  <%= label_tag(:password, "Wachtwoord:") %>
+  <%= f.password_field :password %>
+  <%= label_tag(:password_confirmation, "Wachtwoord controle:") %>
+  <%= f.password_field :password_confirmation %>
+  <%= f.submit "Registeren" %>
+<% end %>
